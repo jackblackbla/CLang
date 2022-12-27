@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+typedef struct point {
+    int xpos;
+    int ypos;
+} Point;
+
+typedef struct rec {
+    Point p1;
+    Point p2;
+} Rectangle;
+
+void getArea(Rectangle * r) {
+    int area =(r-> p2.xpos - r->p1.xpos) * (r -> p2.ypos - r->p1.ypos);
+    if (area < 0) area = -area;
+    printf("%d", area);
+}
+
+void getPoint(Rectangle * r) {
+    printf("[%d, %d], [%d, %d]\n", r->p1.xpos, r->p1.ypos, r->p2.xpos, r->p2.ypos);
+}
+
+int main(void) {
+    Rectangle r = {{1, 2}, {3, 4}};
+    getPoint(&r);
+    getArea(&r);
+} 
