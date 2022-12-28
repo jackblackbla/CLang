@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <string.h>
+#include <malloc.h>
+
+typedef struct hm {
+    char name[30];
+    char number[50];
+
+} HUMAN;
+
+HUMAN InsertData(void) {
+    HUMAN hm;
+
+    printf("[ INSERT ]\n");
+    
+
+
+    printf("Input Name:");
+    fgets(hm.name, sizeof(hm.name), stdin);
+    hm.name[strlen(hm.name) - 1] = '\0';
+
+    printf("Input Tel Number:");
+    fgets(hm.number, sizeof(hm.number), stdin);
+    hm.number[strlen(hm.number) - 1] = '\0';
+
+    return hm;
+
+}
+
+void Delete(HUMAN arr[], int * idx) {
+    char del[50] ;
+    printf("[ DELETE ]");
+    scanf("%s", del);
+    getchar();
+    for (int i = 0; i < *idx; i++) {
+        if (strcmp(arr[i].name, del) == 0) {
+            for (int j = i; j < *idx; j++) {
+                strcpy(arr[j].name, arr[j + 1].name);
+                strcpy(arr[j].number, arr[j + 1].number);
+            }
+            *idx -= 1 ;
+            printf("Delete! \n\n");
+            return ;
+        }
+    }
+
+}
+
+void Search(HUMAN arr[], int idx) {
+    char find[50] ;
+    printf("[ SEARCH ]\n");
+    scanf("%s", find);
+    getchar();
+
+    for (int i = 0; i < idx; i++) {
+        if (strcmp(arr[i].name, find) == 0) {
+            printf("Name: %s     Tel: %s\n", arr[i].name, arr[i].number);
+            return;
+        }
+    }
+}
+
+void PrintAll(HUMAN arr [],int idx) {
+    printf("[ Print All Data ]\n");
+    for (int i = 0; i < idx; i++) {
+        printf("Name: %s    Tel: %s\n", arr[i].name, arr[i].number);
+    }
+    printf("\n\n");
+}
+
+int main(void) {
+    int i;
+    int idx = 0;
+    HUMAN hmarr [10];
+    do{
+    printf("***** MENU *****\n");
+    printf("1. Insert\n");
+    printf("2. Delete\n");
+    printf("3. Search\n");
+    printf("4. Print All\n");
+    printf("5. Exit\n");
+    printf("Choose the item:");
+    scanf("%d", &i);
+    getchar();
+
+        if (i == 1) {
+            hmarr[idx] = InsertData();
+            idx += 1;
+        }
+
+        else if (i == 2) {
+            Delete(hmarr, &idx);
+        }
+
+        else if (i == 3) {
+            Search(hmarr, idx);
+        }
+
+        else if (i == 4) {
+            PrintAll(hmarr, idx);
+        }
+
+        else if (i == 5) {
+            break;
+        }
+    }
+    while (i != 5);
+} 
