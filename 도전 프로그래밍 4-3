@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+#include <malloc.h>
+typedef struct ComplexNumber {
+    double n1;
+    double n2;
+} CN;
+
+void AddCN (CN n1, CN n2) {
+    printf("합의 결과] 실수: %f, 허수:%f\n", n1.n1 + n2.n1, n1.n2 + n2.n2);
+}
+
+void multiplyCN (CN n1, CN n2) {
+    printf("곱의 결과] 실수: %f, 허수:%f\n", n1.n1 * n2.n1, n1.n2 * n2.n2);
+}
+
+int main(void) {
+    CN cn1;
+    CN cn2;
+    printf("복소수 입력1[실수 허수]:");
+    scanf("%lf %lf", &cn1.n1, &cn1.n2);
+
+    printf("복소수 입력1[실수 허수]:");
+    scanf("%lf %lf", &cn2.n1, &cn2.n2);
+
+    AddCN(cn1, cn2);
+    multiplyCN(cn1, cn2);
+} 
