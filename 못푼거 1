@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+typedef struct bm {
+    char name[30];
+    char bookname[100];
+    int page;
+} BM;
+
+int main(void) {
+    BM b[3];
+    for (int i = 0; i < 3; i++) {
+        fgets(b[i].name, sizeof(b[i].name), stdin);
+        b[i].name[strlen(b[i].name) - 1] = '\0';
+        fgets(b[i].bookname, sizeof(b[i].bookname), stdin);
+        b[i].bookname[strlen(b[i].bookname) - 1] = '\0';   
+        scanf("%d", &b[i].page);
+    }
+
+    for (int i = 0; i < 3; i++) {
+        printf("저자: %s\n", b[i].name);
+        printf("제목: %s\n", b[i].bookname);
+        printf("페이지 수: %d\n", b[i].page);
+    }
+} 
