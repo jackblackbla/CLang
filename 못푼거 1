@@ -8,11 +8,16 @@ typedef struct bm {
 
 int main(void) {
     BM b[3];
+    printf("도서 정보 입력:\n");
     for (int i = 0; i < 3; i++) {
+        printf("저자:");
         fgets(b[i].name, sizeof(b[i].name), stdin);
         b[i].name[strlen(b[i].name) - 1] = '\0';
+        printf("제목:");
         fgets(b[i].bookname, sizeof(b[i].bookname), stdin);
         b[i].bookname[strlen(b[i].bookname) - 1] = '\0';   
+
+        printf("페이지 수:");
         scanf("%d", &b[i].page);
     }
 
